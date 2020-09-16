@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收单服务调用" />
+
+    <Button
+        android:id="@+id/btn_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="消费" />
+    <Button
+        android:id="@+id/btn_voidsale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="撤销" />
+    <Button
+        android:id="@+id/btn_refund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="退货" />
+    <Button
+        android:id="@+id/btn_union_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="银联扫码消费" />
+    <Button
+        android:id="@+id/btn_union_void"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="银联扫码撤销" />
+    <Button
+        android:id="@+id/btn_union_refund"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="银联扫码退货" />
+
+    <Button
+        android:id="@+id/btn_installment_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分期消费" />
+    <Button
+        android:id="@+id/btn_installment_void"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分期撤销" />
+</LinearLayout>
