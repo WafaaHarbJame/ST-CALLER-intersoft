@@ -1,4 +1,4 @@
-package com.newland.acquire.caller;
+package com.intersoft.acquire.caller;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,12 +7,12 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.newland.payment.aidl.IPaymentListener;
-import com.newland.payment.aidl.IPaymentService;
+import com.intersoft.payment.aidl.IPaymentListener;
+import com.intersoft.payment.aidl.IPaymentService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,11 +61,11 @@ public class ServiceActivity extends AppCompatActivity {
     public void onViewClicked() {
         if (paymentService == null) {
             Intent intent = new Intent();
-            intent.setPackage("com.newland.payment");
-            intent.setAction("android.intent.action.NEWLAND.PAYMENT.SERVICE");
+            intent.setPackage("com.intersoft.payment");
+            intent.setAction("android.intent.action.intersoft.PAYMENT.SERVICE");
             boolean result = bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
             if (!result) {
-                Toast.makeText(this, "未找到服务", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Can;t find the service", Toast.LENGTH_LONG).show();
             }
         } else {
             getParamValue();
@@ -75,7 +75,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     private void getParamValue(){
         try {
-            tvValue.setText("参数值: " + paymentService.getParam("BASE_MERCHANTNAME"));
+            tvValue.setText("Parameter value: " + paymentService.getParam("BASE_MERCHANTNAME"));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -89,7 +89,7 @@ public class ServiceActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            tvWater.setText("流水同步结果: Code:"+code+",data:"+data);
+                            tvWater.setText("Record Sync result: Code:"+code+",data:"+data);
                         }
                     });
                 }
@@ -99,7 +99,7 @@ public class ServiceActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            tvWater.setText("流水同步结果: failCode:"+failCode+",msg:"+msg);
+                            tvWater.setText("Record Sync result: failCode:"+failCode+",msg:"+msg);
                         }
                     });
 

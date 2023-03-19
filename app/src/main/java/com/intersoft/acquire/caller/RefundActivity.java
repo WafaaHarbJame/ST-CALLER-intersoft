@@ -1,22 +1,22 @@
-package com.newland.acquire.caller;
+package com.intersoft.acquire.caller;
 
 import android.content.Intent;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
+import androidx.appcompat.widget.SwitchCompat;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.newland.acquire.caller.common.Consts;
-import com.newland.acquire.caller.common.ThirdTag;
+import com.intersoft.acquire.caller.common.Consts;
+import com.intersoft.acquire.caller.common.ThirdTag;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InstallmentSaleActivity extends AppCompatActivity {
-    final static int TYPE = 12;
+public class RefundActivity extends AppCompatActivity {
+    final static int TYPE = 6;
     @BindView(R.id.tv_type)
     TextView tvType;
     @BindView(R.id.tv_channel)
@@ -25,23 +25,27 @@ public class InstallmentSaleActivity extends AppCompatActivity {
     TextView tvAction;
     @BindView(R.id.tv_outOrderNo)
     TextView tvOutOrderNo;
-    @BindView(R.id.et_amount)
-    EditText etAmount;
-//    @BindView(R.id.et_periods)
-//    EditText etPeriods;
+    @BindView(R.id.switchisAdminPin)
+    SwitchCompat switchisAdminPin;
     @BindView(R.id.tv_response)
     TextView tvResponse;
+
+    @BindView(R.id.et_amount)
+    EditText etAmount;
+    @BindView(R.id.et_oriReferenceNo)
+    EditText etOriReferenceNo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_installment_sale);
+        setContentView(R.layout.activity_refund);
         ButterKnife.bind(this);
 
+        tvAction.setText(Consts.CARD_ACTION);
         tvType.setText(TYPE + "");
-        tvAction.setText(Consts.INSTALLMENT_ACTION);
-        tvChannel.setText("installment");
-        //自定义外部订单号，作为查找索引
+        tvChannel.setText("acquire");
+        ////External order number ,using for Search index
         tvOutOrderNo.setText(System.currentTimeMillis() + "");
     }
 
@@ -49,16 +53,20 @@ public class InstallmentSaleActivity extends AppCompatActivity {
     public void onViewClicked() {
         Intent intent = new Intent();
         intent.setPackage(Consts.PACKAGE);
-        intent.setAction(Consts.INSTALLMENT_ACTION);
-        intent.putExtra(ThirdTag.CHANNEL_ID,"installment");
+        intent.setAction(Consts.CARD_ACTION);
+        intent.putExtra(ThirdTag.CHANNEL_ID,"acquire");
         intent.putExtra(ThirdTag.TRANS_TYPE, Integer.parseInt(tvType.getText().toString()));
         intent.putExtra(ThirdTag.OUT_ORDERNO, tvOutOrderNo.getText());
         if (etAmount.getText().length()>0){
             intent.putExtra(ThirdTag.AMOUNT, Long.parseLong(etAmount.getText().toString()));
         }
-//        if (etPeriods.getText().length()>0){
-//            intent.putExtra(ThirdTag.PERIODS, Long.parseLong(etPeriods.getText().toString()));
-//        }
+
+        if (etOriReferenceNo.getText().length()>0){
+            intent.putExtra(ThirdTag.OLD_REFERENCE_NO, etOriReferenceNo.getText().toString());
+        }
+
+
+        intent.putExtra(ThirdTag.IS_OPEN_ADMIN, switchisAdminPin.isChecked());
         startActivityForResult(intent, 12);
     }
 
@@ -66,6 +74,8 @@ public class InstallmentSaleActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         data.getStringExtra("123");
-        tvResponse.setText("返回："+data.getExtras().toString());
+//        tvResponse.setText("Response："+data.getExtras().toString());
+        tvResponse.setText("Refund Response："+data.getStringExtra(ThirdTag.JSON_DATA));
+
     }
 }

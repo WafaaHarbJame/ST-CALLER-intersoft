@@ -1,4 +1,4 @@
-package com.newland.payment.aidl;
+package com.intersoft.payment.aidl;
 interface IPaymentListener{
 
 	/**

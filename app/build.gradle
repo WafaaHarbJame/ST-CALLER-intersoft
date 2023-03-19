@@ -1,30 +1,146 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
     defaultConfig {
-        applicationId "com.newland.acquire.caller"
+        applicationId "com.intersoft.acquire.caller"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 33
         versionCode 1
         versionName "2.5.00"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+    //CR# 15.09.2021
+    signingConfigs {
+        ///kkk---Start----------------------------- CR# 13.09.2021
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        //kkk---END--------------------------------
+    }
+    //============================
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
+
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
 }
+
+
+//
+////CR# 15.09.2021
+//
+/////kkk---Start------------------------------------------------------------------CR# 13.09.2021
+///**
+// * Programmatically extract the Newland signing information from a given APK
+// * NOTE:Use for development terminal only
+// */
+////NOTE: pls change the signToolPath (PackageGenerator) as local path
+////def signToolPath = "E:\\NPT_SDK\\Common\\tools\\PackageGenerator\\pkgNLD"
+//def signToolPath = "C:\\NPT_SDK\\Common\\tools\\Package_Generator\\pkgNLD"
+//def tmpNameOut = "-unsigned.apk"  //
+//gradle.buildFinished {
+//    println("=====================Enter buildFinished=======================")
+//    android.applicationVariants.all { variant ->
+//        if (variant.buildType.name == 'debug') {
+//            String outputedFilename = ""
+//            String TARGET_DIR = ""
+//            variant.outputs.each { output ->
+//                def outputFile = output.outputFile
+//                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                    outputedFilename = outputFile.name
+//                    println("> devsignTask :app: outputFile File Name is : " + outputedFilename)
+//                    TARGET_DIR = outputFile.parent +"\\"
+//                }
+//            }
+//            println("> devsignTask :app: TARGET_DIR : " + TARGET_DIR)
+//            def devBuildTask = tasks.create(name: "devsignTask", type: Exec, description: 'for newland dev apk pack') {
+//                def devBuildFile = file(TARGET_DIR + outputedFilename);
+//                def fileName = devBuildFile.getName();
+//                println("> devsignTask :app: unsigned File Name : " + fileName)
+//                if (!devBuildFile.exists()) {
+//                    println("> devsignTask :app: unsigned File not found : " + fileName)
+//                    return
+//                }
+//                def tmpfileName = fileName.substring(0, fileName.length()-4) +tmpNameOut;
+//
+//                copy {
+//                    println("> devsignTask :app: start copy file " )
+//                    from(TARGET_DIR) {
+//                        include '**/*.apk'
+//                        exclude '**/*.json'
+//                    }
+//                    into TARGET_DIR
+//                    rename(fileName, tmpfileName )
+//                }
+//
+//                delete {
+//                    delete devBuildFile
+//                }
+//                def tempFile = file(TARGET_DIR + tmpfileName);
+//                if (!tempFile.exists()) {
+//                    println("> devsignTask :app:--- temp apk not found  --- ")
+//                    println("> devsignTask :app: Pack failed ... ")
+//                    return
+//                }
+//                exec {
+//                    println("> devsignTask :app:--- Start Dev Sign Task --- ")
+//                    println tempFile.getPath()
+//                    def appWorkingDir = workingDir
+//                    println "> devsignTask :app: The current directory is: "
+//                    println appWorkingDir
+//                    workingDir signToolPath
+//                    println "> devsignTask :app: The SignTool directory is: "
+//                    println workingDir
+//                    commandLine 'cmd', '/c', "upt.exe -i ${tempFile.getPath()} -o  ${TARGET_DIR}${fileName}"
+//                    println commandLine
+//                    println("> devsignTask :app: Packing......")
+//                }
+//                delete {
+//                    if (!tempFile.exists()) {
+//                        println("> devsignTask :app: tempFile not found  ")
+//                    } else {
+//                        println tempFile.getAbsoluteFile();
+//                        delete tempFile
+//                        println("> devsignTask :app: deleted the temp file")
+//                    }
+//                }
+//            }
+//            devBuildTask.mustRunAfter variant.getAssembleProvider()
+//        }
+//    }
+//    println("=====================Exit buildFinished=======================")
+//}
+/////kkk---End------------------------------------
+//
+////==============

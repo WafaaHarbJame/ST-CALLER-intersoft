@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="交易类型[transType]:" />
+            android:text="transType:" />
 
         <TextView
             android:id="@+id/tv_type"
@@ -54,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="渠道[channelId]:" />
+            android:text="channelId:" />
 
         <TextView
             android:id="@+id/tv_channel"
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="外部订单号[outOrderNo]:" />
+            android:text="External OrderNo:" />
 
         <TextView
             android:id="@+id/tv_outOrderNo"
@@ -94,14 +94,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="金额[amount]:" />
+            android:text="amount:" />
 
         <EditText
             android:id="@+id/et_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
-            android:hint="1.02元，输入102"
+            android:hint="102 means $1.02"
             android:inputType="number"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
@@ -116,25 +116,25 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="原参考号[oriReferenceNo]:" />
+            android:text="oriReferenceNo:" />
 
         <EditText
             android:id="@+id/et_oriReferenceNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
-            android:hint="请输入原参考号"
+            android:hint="pls input oriReferenceNo"
             android:inputType="number"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
 
 
-    <android.support.v7.widget.SwitchCompat
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchisAdminPin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
-        android:text="是否输入主管密码[isOpenAdminVerify]:" />
+        android:text="isOpenAdminVerify:" />
 
     <Button
         android:id="@+id/btn_start"
@@ -142,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="消费退货" />
+        android:text="SaleRefund" />
 
     <TextView
         android:id="@+id/tv_response"

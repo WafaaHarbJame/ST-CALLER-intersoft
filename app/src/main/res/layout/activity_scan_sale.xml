@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="交易类型[transType]:" />
+            android:text="transTyp:" />
 
         <TextView
             android:id="@+id/tv_type"
@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="渠道[channelId]:" />
+            android:text="channelId:" />
 
         <TextView
             android:id="@+id/tv_channel"
@@ -76,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="外部订单号[outOrderNo]:" />
+            android:text="External OrderNo]:" />
 
         <TextView
             android:id="@+id/tv_outOrderNo"
@@ -96,14 +96,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="金额[amount]:" />
+            android:text="amount:" />
 
         <EditText
             android:id="@+id/et_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
-            android:hint="1.02元，输入102"
+            android:hint="102 means $1.02"
             android:inputType="number"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="消费" />
+        android:text="Sale" />
 
     <TextView
         android:id="@+id/tv_response"

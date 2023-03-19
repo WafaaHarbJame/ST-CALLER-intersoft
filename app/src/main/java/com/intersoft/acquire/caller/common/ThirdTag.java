@@ -1,4 +1,4 @@
-package com.newland.acquire.caller.common;
+package com.intersoft.acquire.caller.common;
 
 /**
  * Third part call Field
@@ -39,6 +39,13 @@ public class ThirdTag {
     public final static String TRANS_TYPE = "transType";
 
     /**
+     * Bitmap
+     */
+    public final static String Bitmap = "BitmapImage";
+
+    /**
+
+    /**
      * amount
      */
     public final static String AMOUNT = "amount";
@@ -56,7 +63,6 @@ public class ThirdTag {
      */
     public final static String EXP_DATE = "expDate";
     /**
-     * 流水号
      * voucherNo
      */
     public final static String TRACE_NO = "voucherNo";
@@ -107,21 +113,24 @@ public class ThirdTag {
 
     /**
      * 付款码,收银台扫码后，结果通过该TAG传给收单
-     *
+     *  using in scan transaction
      */
     public final static String PAY_CODE = "payCode";
 
     /**
      * 扫码订单号,扫码类交易的结果订单号可以放此
+     * scan transaction
      */
     public final static String QR_ORDER = "payOrderNo";
 
     /**
      * 是否需要主管密码 ,默认显示.  true：显示  false：不显示
+     *
      */
     public final static String IS_OPEN_ADMIN = "isOpenAdminVerify";
     /**
      * 读卡方式 ，
+     *
      */
     public final static String CARD_INPUT_MODE = "cardInputMode";
 
@@ -179,4 +188,10 @@ public class ThirdTag {
      * contact transaction
      */
     public final static String INSERT_SALE = "insertSale";
+
+    public final static  String JSON_DATA="JSON_DATA";
+
+    //CR# 15.09.2021
+    public final static  String XML_DATA="XML_DATA";
+    //========================
 }

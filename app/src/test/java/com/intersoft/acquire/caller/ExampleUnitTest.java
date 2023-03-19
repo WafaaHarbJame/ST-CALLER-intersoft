@@ -1,4 +1,4 @@
-package com.newland.acquire.caller;
+package com.intersoft.acquire.caller;
 
 import org.junit.Test;
 

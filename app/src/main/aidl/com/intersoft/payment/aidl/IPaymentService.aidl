@@ -1,5 +1,5 @@
-package com.newland.payment.aidl;
-import com.newland.payment.aidl.IPaymentListener;
+package com.intersoft.payment.aidl;
+import com.intersoft.payment.aidl.IPaymentListener;
 interface IPaymentService{
 	 /**
      * 设置参数

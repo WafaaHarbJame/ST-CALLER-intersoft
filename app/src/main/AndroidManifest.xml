@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.newland.acquire.caller">
+    package="com.intersoft.acquire.caller">
 
     <uses-permission android:name="payment.permission.acquire" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,19 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VoidScanPayActivity"></activity>
-        <activity android:name=".ScanSaleActivity" />
+        <activity
+            android:name=".XmlDataActivity"
+            android:exported="true" />
         <activity android:name=".RefundActivity" />
         <activity android:name=".VoidSaleActivity" />
         <activity android:name=".SaleActivity" />
         <activity android:name=".ServiceActivity" />
-        <activity android:name=".ScanRefundActivity"></activity>
-        <activity android:name=".InstallmentSaleActivity"></activity>
-        <activity android:name=".InstallmentVoidSaleActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.scytec.datamobile.vd.gui.android.AppPreferenceActivity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
